@@ -8,6 +8,7 @@ import (
 	"gitx/internal/repo"
 
 	"github.com/go-git/go-git/v6"
+	"github.com/go-git/go-git/v6/plumbing/transport"
 	"github.com/spf13/cobra"
 )
 
@@ -23,6 +24,10 @@ var addCmd = &cobra.Command{
 		if err != nil {
 			if errors.Is(err, git.ErrTargetDirNotEmpty) {
 				fmt.Fprintln(os.Stderr, "Extension already exists!")
+				return nil
+			}
+			if errors.Is(err, transport.ErrAuthenticationRequired) {
+				fmt.Fprintln(os.Stderr, "Extension not found or private.")
 				return nil
 			}
 			return err
