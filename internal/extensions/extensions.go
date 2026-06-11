@@ -1,4 +1,4 @@
-package repo
+package extensions
 
 import (
 	"errors"
@@ -13,7 +13,7 @@ import (
 	"github.com/go-git/go-git/v6"
 )
 
-func DownloadExtention(name string) (string, error) {
+func Download(name string) (string, error) {
 	url := url.URL{
 		Scheme: "https",
 		Host:   "github.com",
@@ -35,7 +35,7 @@ func DownloadExtention(name string) (string, error) {
 	return path, nil
 }
 
-func InstallExtension(path string) error {
+func Install(path string) error {
 	gitxhome, err := config.EnsureGitxHome()
 	if err != nil {
 		return err

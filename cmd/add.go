@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"gitx/internal/repo"
+	"gitx/internal/extensions"
 
 	"github.com/go-git/go-git/v6"
 	"github.com/go-git/go-git/v6/plumbing/transport"
@@ -20,7 +20,7 @@ var addCmd = &cobra.Command{
 		name := args[0]
 
 		// Fetch extension
-		path, err := repo.DownloadExtention(name)
+		path, err := extensions.Download(name)
 		if err != nil {
 			if errors.Is(err, git.ErrTargetDirNotEmpty) {
 				fmt.Fprintln(os.Stderr, "Extension already exists!")
@@ -34,7 +34,7 @@ var addCmd = &cobra.Command{
 		}
 
 		// Install extension
-		err = repo.InstallExtension(path)
+		err = extensions.Install(path)
 		if err != nil {
 			return err
 		}
