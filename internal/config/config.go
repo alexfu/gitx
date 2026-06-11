@@ -4,6 +4,7 @@ import (
 	"errors"
 	"os"
 	"path"
+	"path/filepath"
 )
 
 func EnsureGitxHome() (string, error) {
@@ -21,4 +22,17 @@ func GitxHome() string {
 		return ""
 	}
 	return path.Join(userhome, ".gitx")
+}
+
+func GitxDataDir() string {
+	if xdgDataHome := os.Getenv("XDG_DATA_HOME"); xdgDataHome != "" {
+		return filepath.Join(xdgDataHome, "gitx")
+	}
+
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return ""
+	}
+
+	return filepath.Join(home, ".local", "share", "gitx")
 }

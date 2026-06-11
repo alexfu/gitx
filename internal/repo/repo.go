@@ -1,6 +1,7 @@
 package repo
 
 import (
+	"errors"
 	"io/fs"
 	"net/url"
 	"os"
@@ -19,12 +20,12 @@ func DownloadExtention(name string) (string, error) {
 		Path:   name,
 	}
 
-	path, err := extensionPath(name)
-	if err != nil {
-		return "", err
+	path := extensionPath(name)
+	if path == "" {
+		return "", errors.New("failed to resolve extension path")
 	}
 
-	_, err = git.PlainClone(path, &git.CloneOptions{
+	_, err := git.PlainClone(path, &git.CloneOptions{
 		URL: url.String(),
 	})
 	if err != nil {
@@ -50,25 +51,9 @@ func InstallExtension(path string) error {
 	return nil
 }
 
-func extensionPath(name string) (string, error) {
-	extensionDir, err := dataDir()
-	if err != nil {
-		return "", err
-	}
-	return filepath.Join(extensionDir, name), nil
-}
-
-func dataDir() (string, error) {
-	if xdgDataHome := os.Getenv("XDG_DATA_HOME"); xdgDataHome != "" {
-		return filepath.Join(xdgDataHome, "gitx"), nil
-	}
-
-	home, err := os.UserHomeDir()
-	if err != nil {
-		return "", err
-	}
-
-	return filepath.Join(home, ".local", "share", "gitx"), nil
+func extensionPath(name string) string {
+	extensionDir := config.GitxDataDir()
+	return filepath.Join(extensionDir, name)
 }
 
 func isFile(path string) bool {
