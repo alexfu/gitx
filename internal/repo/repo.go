@@ -43,7 +43,7 @@ func InstallExtension(path string) error {
 
 	filepath.WalkDir(path, func(path string, d fs.DirEntry, err error) error {
 		basename := filepath.Base(path)
-		if strings.HasPrefix(basename, "git-") && isFile(path) {
+		if strings.HasPrefix(basename, "git-") && !d.IsDir() {
 			os.Symlink(path, filepath.Join(gitxhome, basename))
 		}
 		return nil
@@ -54,13 +54,4 @@ func InstallExtension(path string) error {
 func extensionPath(name string) string {
 	extensionDir := config.GitxDataDir()
 	return filepath.Join(extensionDir, name)
-}
-
-func isFile(path string) bool {
-	info, err := os.Stat(path)
-	if err != nil {
-		return false
-	}
-
-	return !info.IsDir()
 }
