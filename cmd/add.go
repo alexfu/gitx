@@ -15,6 +15,7 @@ import (
 var addCmd = &cobra.Command{
 	Use:          "add",
 	Short:        "Add extensions",
+	Args:         cobra.ExactArgs(1),
 	SilenceUsage: true,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		name := args[0]
