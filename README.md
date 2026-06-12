@@ -6,26 +6,28 @@ Commands are just shell scripts, so they can be as simple or as complex as you w
 
 ## Usage
 
-Add extensions with `gitx add`. The argument must be a public GitHub repository in the form `owner/repo`.
+Add an extension with `gitx add`
 
 ```shell
 $ gitx add alexfu/git-pick-branch
 ```
 
-Then use any of the scripts the extension provides. Each script is named `git-<command>` and is invoked as `git <command>`. For example, `alexfu/git-pick-branch` provides a `git-pick-branch` script, which you call like so:
+> The argument must be a public GitHub repository in the form `owner/repo`
+
+All custom commands in [alexfu/git-pick-branch](https://github.com/alexfu/git-pick-branch) are now available for use like so:
 
 ```shell
 $ git pick-branch
 ```
 
-List installed extensions with `gitx list`.
+List installed extensions with `gitx list`
 
 ```shell
 $ gitx list
 • alexfu/git-pick-branch/git-pick-branch
 ```
 
-Remove extensions with `gitx remove`. You can remove an entire extension, a single script, or every extension from an owner.
+Remove extensions with `gitx remove`. You can remove an entire extension, a single command, or every extension from an owner.
 
 ```shell
 $ gitx remove alexfu/git-pick-branch
