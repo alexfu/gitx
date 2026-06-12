@@ -4,20 +4,31 @@ gitx (git extensions) is a CLI tool for augmenting `git` through shell scripts.
 
 ## Install
 
-Pick the line for your platform:
+<details>
+  <summary>macOS, Apple Silicon</summary>
 
-```shell
-# macOS, Apple Silicon
-$ curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_darwin_arm64.tar.gz | sudo tar xz -C /usr/local/bin gitx
+  ```shell
+  curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_darwin_arm64.tar.gz | sudo tar xz -C /usr/local/bin gitx
+  ```
+</details>
 
-# macOS, Intel
-$ curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_darwin_amd64.tar.gz | sudo tar xz -C /usr/local/bin gitx
+<details>
+  <summary>macOS, Intel</summary>
 
-# Linux, x86_64
-$ curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_linux_amd64.tar.gz | sudo tar xz -C /usr/local/bin gitx
-```
+  ```shell
+  curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_darwin_amd64.tar.gz | sudo tar xz -C /usr/local/bin gitx
+  ```
+</details>
 
-Then add `$HOME/.gitx` to your `PATH` so that `git` can find installed extensions. Add the following line to your shell's startup file (`~/.zshrc`, `~/.bashrc`, `~/.config/fish/config.fish`, etc.):
+<details>
+  <summary>Linux, x86_64</summary>
+
+  ```shell
+  curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_linux_amd64.tar.gz | sudo tar xz -C /usr/local/bin gitx
+  ```
+</details>
+
+Then add the following line to your shell's startup file (`~/.zshrc`, `~/.bashrc`, `~/.config/fish/config.fish`, etc.):
 
 ```shell
 export PATH="$HOME/.gitx:$PATH"
