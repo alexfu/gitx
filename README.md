@@ -88,6 +88,7 @@ Restart your shell or `source` the file for the change to take effect.
 |Name|Description|
 |----|-----------|
 |[alexfu/git-pick-branch](https://github.com/alexfu/git-pick-branch)|Interactively pick a branch with `fzf`|
+|[alexfu/git-pr-from-commit](https://github.com/alexfu/git-pr-from-commit)|Create pull requests from a commit|
 
 ## License
 
