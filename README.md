@@ -37,32 +37,43 @@ $ gitx remove alexfu
 
 ## Install
 
-<details>
-  <summary>macOS, Apple Silicon</summary>
+<table>
+  <thead>
+    <tr><th>Platform</th><th width="600">Command</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>macOS, Apple Silicon</td>
+      <td width="600">
 
 ```shell
 curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_darwin_arm64.tar.gz | sudo tar xz -C /usr/local/bin gitx
 ```
 
-</details>
-
-<details>
-  <summary>macOS, Intel</summary>
+</td>
+    </tr>
+    <tr>
+      <td>macOS, Intel</td>
+      <td width="600">
 
 ```shell
 curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_darwin_amd64.tar.gz | sudo tar xz -C /usr/local/bin gitx
 ```
 
-</details>
-
-<details>
-  <summary>Linux, x86_64</summary>
+</td>
+    </tr>
+    <tr>
+      <td>Linux, x86_64</td>
+      <td width="600">
 
 ```shell
 curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_linux_amd64.tar.gz | sudo tar xz -C /usr/local/bin gitx
 ```
 
-</details>
+</td>
+    </tr>
+  </tbody>
+</table>
 
 Then add the following line to your shell's startup file (`~/.zshrc`, `~/.bashrc`, `~/.config/fish/config.fish`, etc.):
 
