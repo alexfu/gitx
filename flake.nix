@@ -15,6 +15,7 @@
             devShells.default = with pkgs; mkShell {
               packages = [
                 go
+                goreleaser
               ];
             };
           };

@@ -1,0 +1,44 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: gitx
+    main: ./main.go
+    binary: gitx
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: linux
+        goarch: arm64
+    ldflags:
+      - -s -w
+      - -X gitx/cmd.version={{.Version}}
+
+archives:
+  - id: gitx
+    name_template: "gitx_{{.Version}}_{{.Os}}_{{.Arch}}"
+    formats: [tar.gz]
+    files:
+      - README.md
+      - LICENSE
+
+checksum:
+  name_template: "checksums.txt"
+  algorithm: sha256
+
+changelog:
+  use: git
+  sort: asc
+
+release:
+  draft: false
+  prerelease: auto
