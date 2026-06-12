@@ -83,6 +83,12 @@ export PATH="$HOME/.gitx:$PATH"
 
 Restart your shell or `source` the file for the change to take effect.
 
+## Extensions
+
+|Name|Description|
+|----|-----------|
+|[alexfu/git-pick-branch](https://github.com/alexfu/git-pick-branch)|Interactively pick a branch with `fzf`|
+
 ## License
 
 [MIT](LICENSE) © Alex Fu
