@@ -14,8 +14,18 @@ import (
 // removeCmd represents the remove command
 var removeCmd = &cobra.Command{
 	Use:   "remove [extension]",
-	Short: "Remove git extensions.",
-	Args:  cobra.MinimumNArgs(1),
+	Short: "Remove installed git extensions.",
+	Long: `Remove installed git extensions.
+
+Pass an extension to remove it, a single script to remove just that
+command, or an owner to remove every extension you've installed from
+them. You'll be shown what will be deleted and asked to confirm first.
+
+Examples:
+  gitx remove owner/repo
+  gitx remove owner/repo/git-script
+  gitx remove owner`,
+	Args: cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		extension := args[0]
 
