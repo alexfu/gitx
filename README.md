@@ -2,19 +2,61 @@
 
 gitx (git extensions) is a CLI tool for augmenting `git` through shell scripts.
 
-## Usage
+## Install
 
-Add extensions with `gitx add`
+Pick the line for your platform:
 
 ```shell
-$ gitx add alexfu/git-hello
+# macOS, Apple Silicon
+$ curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_darwin_arm64.tar.gz | sudo tar xz -C /usr/local/bin gitx
+
+# macOS, Intel
+$ curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_darwin_amd64.tar.gz | sudo tar xz -C /usr/local/bin gitx
+
+# Linux, x86_64
+$ curl -sSL https://github.com/alexfu/gitx/releases/latest/download/gitx_linux_amd64.tar.gz | sudo tar xz -C /usr/local/bin gitx
 ```
 
-Then use like so:
+Then add `$HOME/.gitx` to your `PATH` so that `git` can find installed extensions. Add the following line to your shell's startup file (`~/.zshrc`, `~/.bashrc`, `~/.config/fish/config.fish`, etc.):
 
 ```shell
-$ git hello
-Hello World!
+export PATH="$HOME/.gitx:$PATH"
+```
+
+Restart your shell or `source` the file for the change to take effect.
+
+## Usage
+
+Add extensions with `gitx add`. The argument must be a public GitHub repository in the form `owner/repo`.
+
+```shell
+$ gitx add alexfu/git-scripts
+```
+
+Then use any of the scripts the extension provides. Each script is named `git-<command>` and is invoked as `git <command>`. For example, `alexfu/git-scripts` provides a `git-open` script, which you call like so:
+
+```shell
+$ git open
+```
+
+List installed extensions with `gitx list`.
+
+```shell
+$ gitx list
+• alexfu/git-scripts/git-fdf
+• alexfu/git-scripts/git-open
+• alexfu/git-scripts/git-peek
+• alexfu/git-scripts/git-pr-from-commit
+• alexfu/git-scripts/git-rename-branch
+• alexfu/git-scripts/git-start
+```
+
+Remove extensions with `gitx remove`. You can remove an entire extension, a single script, or every extension from an owner.
+
+```shell
+$ gitx remove alexfu/git-scripts
+$ gitx remove alexfu/git-scripts/git-open
+$ gitx remove alexfu
 ```
 
 ## License
