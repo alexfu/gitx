@@ -6,9 +6,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var version = "dev"
+
 var rootCmd = &cobra.Command{
-	Use:   "gitx",
-	Short: "Augment git with shell scripts.",
+	Use:     "gitx",
+	Short:   "Augment git with shell scripts.",
+	Version: version,
 }
 
 func Execute() {
