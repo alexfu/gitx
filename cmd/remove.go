@@ -14,7 +14,7 @@ import (
 // removeCmd represents the remove command
 var removeCmd = &cobra.Command{
 	Use:   "remove [extension]",
-	Short: "Remove installed git extensions.",
+	Short: "Remove installed git extensions",
 	Long: `Remove installed git extensions.
 
 Pass an extension to remove it, a single script to remove just that

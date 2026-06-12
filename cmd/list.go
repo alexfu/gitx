@@ -16,7 +16,7 @@ import (
 
 var listCmd = &cobra.Command{
 	Use:   "list",
-	Short: "List currently installed git extensions.",
+	Short: "List installed git extensions",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		datadir := config.GitxDataDir()
