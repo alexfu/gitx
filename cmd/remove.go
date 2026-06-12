@@ -25,7 +25,7 @@ Examples:
   gitx remove owner/repo
   gitx remove owner/repo/git-script
   gitx remove owner`,
-	Args: cobra.MinimumNArgs(1),
+	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		extension := args[0]
 
