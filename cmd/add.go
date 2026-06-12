@@ -40,7 +40,7 @@ var addCmd = &cobra.Command{
 			return err
 		}
 
-		fmt.Println("✅ Extension installed!")
+		fmt.Fprintf(os.Stdout, "✅ Extension installed!\n")
 		return nil
 	},
 }
